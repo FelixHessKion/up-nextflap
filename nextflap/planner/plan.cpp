@@ -20,7 +20,10 @@ Plan::Plan(SASAction* action, Plan* parentPlan, TPlanId idPlan, bool* holdCondEf
 	this->cvarValues = nullptr;
 	this->planUpdates = nullptr;
 	this->fixedInit = false;
-	if (parentPlan != nullptr) this->g = parentPlan->g + 1;
+    // calculate plan costs
+    if (parentPlan != nullptr && this->action->startNumEff.size()){
+        this->g = parentPlan->g + this->action->startNumEff[0].exp.value;
+    }
 	else this->g = 0;
 	this->h = (int)MAX_UINT16;
 	this->hLand = 0;

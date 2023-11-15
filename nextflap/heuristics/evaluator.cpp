@@ -1,7 +1,8 @@
 #include "evaluator.h"
 #include <time.h>
 #include "numericRPG.h"
-#include "hFF.h"
+// #include "hFF.h"
+#include "hMetricFF.h"
 using namespace std;
 
 /********************************************************/
@@ -18,15 +19,15 @@ using namespace std;
 // Evaluates a plan. Its heuristic value is stored in the plan (p->h)
 void Evaluator::evaluate(Plan* p) {
 	int limit = p->parentPlan->h;
-	if (numericConditionsOrConditionalEffects) {
-		NumericRPG rpg(p->fs, tilActions, task, limit);
+//	if (numericConditionsOrConditionalEffects) {
+//		NumericRPG rpg(p->fs, tilActions, task, limit);
+//		p->h = rpg.evaluate();
+//	}
+//	else {
+        METRIC_FF rpg(p->fs, tilActions, task);
 		p->h = rpg.evaluate();
-	}
-	else {
-		FF_RPG rpg(p->fs, tilActions, task);
-		p->h = rpg.evaluate();
-	}
-	if (landmarks != nullptr)
+    // }
+    if (landmarks != nullptr)
 	p->hLand = landmarks->countUncheckedNodes();
 }
 

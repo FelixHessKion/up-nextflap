@@ -6,14 +6,19 @@ project(NextFLAP)
 set(CMAKE_CXX_STANDARD 20)  
 
 set(CMAKE_BUILD_TYPE Debug)
-  
+
+# add_definitions(-D_DEBUG)
+# add_definitions(-DDEBUG_RPG_ON)
+add_definitions(-DDEBUG_METRIC_H_ON)
+
 # Add source files  
 set(SOURCES  
    nextflap/grounder/grounder.cpp  
    nextflap/grounder/groundedTask.cpp  
    nextflap/heuristics/evaluator.cpp  
    nextflap/heuristics/hFF.cpp  
-   nextflap/heuristics/hLand.cpp  
+   nextflap/heuristics/hMetricFF.cpp
+   nextflap/heuristics/hLand.cpp
    nextflap/heuristics/landmarks.cpp  
    nextflap/heuristics/numericRPG.cpp  
    nextflap/heuristics/rpg.cpp  
