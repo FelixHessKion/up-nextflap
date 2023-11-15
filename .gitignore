@@ -1,1 +1,9 @@
 build
+.qtc_clangd
+*.cflags
+*.config
+*.creator
+*.cxxflags
+*.files
+*.includes
+
